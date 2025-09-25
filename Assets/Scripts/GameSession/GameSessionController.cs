@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using DG.Tweening;
-using MazeGeneration;
+using Saves;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
-public class GameSessionController : MonoBehaviour
+namespace GameSession
+{
+    public class GameSessionController : MonoBehaviour
     {
         [SerializeField] private CanvasGroup winPopup;
         
@@ -79,6 +80,7 @@ public class GameSessionController : MonoBehaviour
 
         public void GoToMenu()
         {
-            SceneManager.LoadScene("MenuScene");
+            GameController.Instance.GoToMenuScene();
         }
     }
+}

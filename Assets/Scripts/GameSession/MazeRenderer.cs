@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using MazeGeneration;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace MazeGeneration
+namespace GameSession
 {
     public class MazeRenderer : MonoBehaviour
     {
