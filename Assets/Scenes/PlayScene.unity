@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 158200920}
   - component: {fileID: 158200919}
   m_Layer: 5
-  m_Name: TimerLabel (1)
+  m_Name: DistanceLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -485,7 +485,7 @@ GameObject:
   m_Component:
   - component: {fileID: 351267826}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -680,9 +680,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winPopup: {fileID: 438961885}
-  renderer: {fileID: 2113046749}
-  _timerText: {fileID: 990190568}
-  _distanceText: {fileID: 573067013}
+  mazeRenderer: {fileID: 2113046749}
+  timerText: {fileID: 990190568}
+  distanceText: {fileID: 573067013}
   particles:
   - {fileID: 1951811029}
   - {fileID: 620663160}

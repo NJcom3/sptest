@@ -12,9 +12,9 @@ public class GameSessionController : MonoBehaviour
     {
         [SerializeField] private CanvasGroup winPopup;
         
-        [SerializeField] public MazeRenderer renderer;
-        [SerializeField] private TMP_Text _timerText;
-        [SerializeField] private TMP_Text _distanceText;
+        [SerializeField] public MazeRenderer mazeRenderer;
+        [SerializeField] private TMP_Text timerText;
+        [SerializeField] private TMP_Text distanceText;
         [SerializeField] List<ParticleSystem> particles;
 
         private bool _pause = true;
@@ -41,7 +41,7 @@ public class GameSessionController : MonoBehaviour
             }
             
             _timeFromStart += Time.deltaTime;
-            _timerText.text = TimeSpan.FromSeconds(_timeFromStart).ToString(@"mm\:ss");
+            timerText.text = TimeSpan.FromSeconds(_timeFromStart).ToString(@"mm\:ss");
         }
 
         public void AddDistance(float distance)
@@ -52,7 +52,7 @@ public class GameSessionController : MonoBehaviour
             }
             
             _distance += distance;
-            _distanceText.text = _distance.ToString("F2");
+            distanceText.text = _distance.ToString("F2");
         }
 
         public void ExitFounded()

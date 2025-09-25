@@ -4,16 +4,20 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+    public static GameController Instance = null;
+    
     [SerializeField] private Player playerPrefab;
     [SerializeField] private GameObject exitPrefab;
 
     private GameSessionController _gameSessionController;
-    public static GameController Instance = null;
     private Cell[,] _grid;
 
     private int _height;
     private int _width;
     private int _exitsCount;
+    
+    // player offset on start 4 pretty placing on spawn point
+    private static readonly Vector3 additionalStartPosHeight = new Vector3(0, 0.5f, 0);
 
     public int Height => _height;
     public int Width => _width;
@@ -45,7 +49,7 @@ public class GameController : MonoBehaviour
     public void OnPlaySceneLoaded(GameSessionController gameSessionController)
     {
         _gameSessionController = gameSessionController;
-        _gameSessionController.renderer.RenderMaze(_grid, _grid.GetLength(0), _grid.GetLength(1));
+        _gameSessionController.mazeRenderer.RenderMaze(_grid, _grid.GetLength(0), _grid.GetLength(1));
       
         PlacePlayer();
         PlaceExits();
@@ -55,18 +59,17 @@ public class GameController : MonoBehaviour
 
     private void PlacePlayer()
     {
-        var player = Instantiate(playerPrefab);
-        player.transform.position = _gameSessionController.renderer.startPosition;
+        ;
+        var player = Instantiate(playerPrefab, _gameSessionController.mazeRenderer.startPosition + additionalStartPosHeight, default);
         player.SetAddDistanceAction(_gameSessionController.AddDistance);
         player.SetExitFoundedAction(_gameSessionController.ExitFounded);
     }
 
     private void PlaceExits()
     {
-        foreach (var exitPosition in _gameSessionController.renderer.exitPositions)
+        foreach (var exitPosition in _gameSessionController.mazeRenderer.exitPositions)
         {
-            var exit = Instantiate(exitPrefab);
-            exit.transform.position = exitPosition;
+            Instantiate(exitPrefab, exitPosition, default);
         }
     }
 }
